@@ -1,3 +1,42 @@
+Eg1
+====
+      import React from 'react'
+      import ReactDOM from 'react-dom'
+
+      const Hello = ({name, age}) => {
+        const bornYear = () => new Date().getFullYear() -age
+        return (
+          <div>
+            <p>
+              Hello {name}, you are {age} years old
+            </p>
+            <p>So you were probably born in {bornYear()}</p>
+          </div>
+        )
+      }
+      const App = () => {
+        const name = 'Peter'
+        const age = 22
+
+        return(
+          <div>
+            <h1>Greetings</h1>
+            <Hello name = 'Maya' age={26 + 10} />
+            <Hello name = {name} age={age} />
+          </div>
+        )
+      }
+
+      ReactDOM.render(
+        // React.createElement(App, null),
+        <App />,
+        document.getElementById('root')
+      )
+-------------------------------------------------------------------------
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
