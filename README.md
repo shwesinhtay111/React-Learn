@@ -212,3 +212,39 @@ Eg.4
 
       export default App;
  ---------------------------------------------------------------------------------
+ Eg.5
+ ======
+       import React, {useState} from 'react';
+      import ReactDom from 'react-dom';
+      class Title extends React.Component{
+        render(){
+          return(
+            <div>
+              <h1 name={this.props.name}></h1>
+            </div>
+          )
+        }
+      }
+      class Header extends React.Component{
+        render(){
+          return(
+            <div>
+              <Title name={this.props.name}></Title>
+            </div>
+          )
+        }
+
+      }
+      class App extends React.Component{
+        render(){
+          return(
+            <div>
+              <Header name="App Name"></Header>
+              how are you
+            </div>
+          )
+        }
+      }
+      export default App;
+      
+      -------------------------------------------------
