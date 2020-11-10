@@ -248,8 +248,8 @@ Eg.4
       export default App;
       
       -------------------------------------------------
-      Eg.6
-      ============
+   Eg.6
+  ============
       import React, { useState } from 'react';
       import ReactDom from 'react-dom';
       class Toolbar extends React.Component {
@@ -276,8 +276,8 @@ Eg.4
       }
       export default App;
       ---------------------------------
-      Eg7
-      =====
+  Eg7
+ =====
       import React from 'react';
       const Item = props => {
           return (<li>
