@@ -276,3 +276,26 @@ Eg.4
       }
       export default App;
       ---------------------------------
+      Eg7
+      =====
+      import React from 'react';
+      const Item = props => {
+          return (<li>
+              {props.name}
+              ${props.price}
+          </li>
+          )
+      }
+      const App = props => {
+          return(
+              <div>
+                  <ul>
+                      <Item name="apple" price="0.99">  </Item>
+                      <Item name="orange" price="0.89"></Item>
+                  </ul>
+              </div>
+          )
+
+      }
+      export default App;
+-------------------------------------------------------
