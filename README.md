@@ -342,4 +342,83 @@ Eg.4
       }
       export default App;
       -----------------------------
+Eg 9
+=======
+      In App.js
+      --------
+      import React, { createRef } from 'react';
+      import { connect } from 'react-redux';
+
+      const Item = ({ name, price }) => (
+        <li> {name}, ${price}</li>
+      )
+
+      const App = props => {
+        let nameRef = createRef();
+        let priceRef = createRef();
+        const add = () => {
+          props.add(
+            props.items.length + 1,
+            nameRef.current.value,
+            priceRef.current.value
+          )
+        }
+        return (
+          <div>
+            <ul>
+              {props.items.map(i => (
+                <Item key={i.id} name={i.name} price={i.price} />
+
+              ))}
+            </ul>
+            <input type="text" ref={nameRef} /><br />
+            <input type="text" ref={priceRef} /><br />
+            <button onClick={add}>Add</button>
+          </div>
+        )
+      }
+      const stateToProps = state => { return { items: state }; }
+      const dispatchToProps = dispatch => {
+        return {
+          add: (id, name, price) => { 
+            dispatch({ 
+              type: 'ADD', 
+              item: { id, name, price } 
+            }); 
+          }
+        }
+      }
+      const ReduxApp = connect(stateToProps, dispatchToProps)(App);
+      export default ReduxApp;
+      
+      
+      In index.js, Updated as:
+      ------------------------
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import './index.css';
+      import App from './App';
+      import reportWebVitals from './reportWebVitals';
+      import { createStore } from 'redux';
+      import { Provider } from 'react-redux';
+      const store = createStore((state = [], action) => {
+        if (action.type === "ADD") return [...state, action.item];
+        return state;
+      });
+      ReactDOM.render(
+        <React.StrictMode>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </React.StrictMode>,
+        document.getElementById('root')
+      );
+
+      // If you want to start measuring performance in your app, pass a function
+      // to log results (for example: reportWebVitals(console.log))
+      // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+      reportWebVitals();
+
+-------------------------------------------------------------
+
 
